@@ -4,9 +4,9 @@
  * @summary 프로젝트에 쓰이는 상수 변수 정의
  */
 
-export const SERVER_URL = "http://3.34.255.249";
+export const SERVER_URL = "http://api.codeplat.co.kr";
 
-export const CLIENT_URL = "http://3.34.141.204";
+export const CLIENT_URL = "http://codeplat.co.kr";
 
 export const EmailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
