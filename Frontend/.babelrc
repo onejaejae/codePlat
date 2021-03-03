@@ -1,0 +1,18 @@
+/**
+ * @author 박진호
+ * @version 1.0
+ * @summary styled-component 라이브러리 SSR 적용하기 위한 바벨 설정 파일
+ */
+
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true,
+        "displayName": true
+      }
+    ]
+  ]
+}
