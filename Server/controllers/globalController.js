@@ -6,6 +6,7 @@ import routes from "../routes";
 import { nodemail } from "../common/nodemailer";
 import { jsonParse } from "../common/jsonParse";
 import { generateHash } from "../common/generateHash";
+import { CLIENT_URL } from "../common/config";
 
 export const postLogin = (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -243,7 +244,7 @@ export const postGithubLogin = (req, res) => {
   if (req.user.email === String(req.user.githubId)) {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/auth/register",
+        pathname: `${CLIENT_URL}/auth/register`,
         query: {
           type: "email",
         },
@@ -252,14 +253,14 @@ export const postGithubLogin = (req, res) => {
   } else if (!req.user.nickname) {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/auth/register",
+        pathname: `${CLIENT_URL}/auth/register`,
         query: {
           type: "sns",
         },
       })
     );
   } else {
-    res.redirect("http://localhost:3000");
+    res.redirect(`${CLIENT_URL}`);
   }
 };
 
@@ -373,7 +374,7 @@ export const postKakaoLogin = (req, res) => {
   if (req.user.email === String(req.user.kakaoId)) {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/auth/register",
+        pathname: `${CLIENT_URL}/auth/register`,
         query: {
           type: "email",
         },
@@ -382,7 +383,7 @@ export const postKakaoLogin = (req, res) => {
   } else if (!req.user.nickname) {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/auth/register",
+        pathname: `${CLIENT_URL}/auth/register`,
         query: {
           type: "sns",
         },
@@ -391,7 +392,7 @@ export const postKakaoLogin = (req, res) => {
   } else {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/",
+        pathname: `${CLIENT_URL}`,
       })
     );
   }
@@ -438,7 +439,7 @@ export const postGoogleLogin = (req, res) => {
   if (!req.user.nickname) {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/auth/register",
+        pathname: `${CLIENT_URL}/auth/register`,
         query: {
           type: "sns",
         },
@@ -447,7 +448,7 @@ export const postGoogleLogin = (req, res) => {
   } else {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/",
+        pathname: `${CLIENT_URL}`,
       })
     );
   }
@@ -489,14 +490,14 @@ export const naverLoginCallback = async (
 };
 
 export const naverLogin = passport.authenticate("naver", {
-  failureRedirect: "http://localhost:3000/",
+  failureRedirect: `${CLIENT_URL}`,
 });
 
 export const postNaverLogin = async (req, res) => {
   if (!req.user.nickname) {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/auth/register",
+        pathname: `${CLIENT_URL}/auth/register`,
         query: {
           type: "sns",
         },
@@ -505,7 +506,7 @@ export const postNaverLogin = async (req, res) => {
   } else {
     return res.redirect(
       url.format({
-        pathname: "http://localhost:3000/",
+        pathname: `${CLIENT_URL}`,
       })
     );
   }

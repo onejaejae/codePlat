@@ -4,9 +4,9 @@
  * @summary 프로젝트에 쓰이는 상수 변수 정의
  */
 
-export const SERVER_URL = "http://localhost:4000";
+export const SERVER_URL = "http://3.34.255.249";
 
-export const CLIENT_URL = "http://localhost:3000";
+export const CLIENT_URL = "http://3.34.141.204";
 
 export const EmailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
