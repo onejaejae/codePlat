@@ -8,12 +8,12 @@ import "./models/Post";
 import "./models/Scrap";
 import "./models/User";
 
+import("@babel/register");
+
 dotenv.config({ path: ".env" });
 
-const PORT = process.env.SERVER_PORT || 4000;
-
 const handleListening = () => {
-  console.log(`Listening on http://localhost:${PORT}`);
+  console.log(`Listening`);
 };
 
-app.listen(PORT, handleListening);
+app.listen(4000, handleListening);
