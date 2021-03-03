@@ -123,9 +123,7 @@ passport.use(
     {
       clientID: process.env.NAVER_CLIENT_ID,
       clientSecret: process.env.NAVER_CLIENT_SECRET,
-      callbackURL: `${
-        process.env.NODE_ENV === "production" ? BACK_URL : BACK_URL
-      }${routes.home}${routes.naverCallback}`,
+      callbackURL: `http://3.34.255.249${routes.home}${routes.naverCallback}`,
       authType: "reauthenticate",
     },
     naverLoginCallback
