@@ -8,7 +8,7 @@ import "./models/Post";
 import "./models/Scrap";
 import "./models/User";
 
-dotenv.config();
+dotenv.config({ path: ".env" });
 
 const PORT = process.env.SERVER_PORT || 4000;
 
