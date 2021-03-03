@@ -2,6 +2,7 @@ import GitHubStrategy from "passport-github";
 import GoogleStrategy from "passport-google-oauth2";
 import NaverStrategy from "passport-naver";
 import bcrypt from "bcrypt";
+import { BACK_URL } from "./common/config";
 
 import {
   githubLoginCallback,
@@ -65,9 +66,15 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: `http://localhost:4000${routes.home}${routes.githubCallback}`,
+      callbackURL: `${
+        process.env.NODE_ENV === "production" ? BACK_URL : "localhost://4000"
+      }${routes.home}${routes.githubCallback}`,
       scope: "user:email",
-      authorizationURL: `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=http://localhost:4000${routes.home}${routes.githubCallback}&login=select_account`,
+      authorizationURL: `https://github.com/login/oauth/authorize?client_id=${
+        process.env.GITHUB_CLIENT_ID
+      }&redirect_uri=${
+        process.env.NODE_ENV === "production" ? BACK_URL : "localhost://4000"
+      }${routes.home}${routes.githubCallback}&login=select_account`,
     },
     githubLoginCallback
   )
@@ -82,8 +89,14 @@ passport.use(
       clientID: process.env.KAKAO_CLIENT_ID,
       // clientSecret을 사용하지 않는다면 넘기지 말거나 빈 스트링을 넘길 것
       clientSecret: process.env.KAKAO_CLIENT_SECRET,
-      callbackURL: `http://localhost:4000${routes.home}${routes.kakaoCallback}`,
-      authorizationURL: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=http://localhost:4000${routes.home}${routes.kakaoCallback}&prompt=login`,
+      callbackURL: `${
+        process.env.NODE_ENV === "production" ? BACK_URL : "localhost://4000"
+      }${routes.home}${routes.kakaoCallback}`,
+      authorizationURL: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${
+        process.env.KAKAO_CLIENT_ID
+      }&redirect_uri=${
+        process.env.NODE_ENV === "production" ? BACK_URL : "localhost://4000"
+      }${routes.home}${routes.kakaoCallback}&prompt=login`,
     },
     kakaoLoginCallback
   )
@@ -96,7 +109,9 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: `http://localhost:4000${routes.home}${routes.googleCallback}`,
+      callbackURL: `${
+        process.env.NODE_ENV === "production" ? BACK_URL : "localhost://4000"
+      }${routes.home}${routes.googleCallback}`,
     },
     googleLoginCallback
   )
@@ -108,7 +123,9 @@ passport.use(
     {
       clientID: process.env.NAVER_CLIENT_ID,
       clientSecret: process.env.NAVER_CLIENT_SECRET,
-      callbackURL: `http://localhost:4000${routes.home}${routes.naverCallback}`,
+      callbackURL: `${
+        process.env.NODE_ENV === "production" ? BACK_URL : "localhost://4000"
+      }${routes.home}${routes.naverCallback}`,
       authType: "reauthenticate",
     },
     naverLoginCallback
