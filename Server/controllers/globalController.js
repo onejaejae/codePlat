@@ -366,7 +366,7 @@ export const kakaoLoginCallback = async (
 
 export const KakaoLogin = (req, res) => {
   res.redirect(
-    `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=http://codeplat.co.kr${routes.home}${routes.kakaoCallback}&prompt=login`
+    `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=http://api.codeplat.co.kr${routes.home}${routes.kakaoCallback}&prompt=login`
   );
 };
 
