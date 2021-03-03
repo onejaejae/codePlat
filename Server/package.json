@@ -49,7 +49,7 @@
   },
   "scripts": {
     "dev": "nodemon --exec babel-node init.js",
-    "start" : "babel-node init.js"
+    "start": "babel-node init.js"
   },
   "author": "",
   "license": "ISC"
