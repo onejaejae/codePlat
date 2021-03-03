@@ -8,6 +8,7 @@ import mongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import passport from "passport";
 import cors from "cors";
+import path from "path";
 
 import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
@@ -35,7 +36,7 @@ app.use(
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/uploads", express.static("uploads"));
+app.use(express.static(path.join(__dirname, "../Frontend/.next")));
 app.use(cookieParser());
 app.use(
   session({
