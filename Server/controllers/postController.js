@@ -21,7 +21,7 @@ export const postWrite = async (req, res) => {
 
     if (files) {
       const array = files.map((file) => {
-        return file.path;
+        return file.location;
       });
       data.fileUrl = array;
 
@@ -192,7 +192,7 @@ export const updatePost = async (req, res) => {
 
   if (files) {
     files.forEach((file1) => {
-      array.push(file1.path);
+      array.push(file1.location);
       array2.push(file1.originalname);
     });
 

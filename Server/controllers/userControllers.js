@@ -93,7 +93,7 @@ export const postEditProfile = async (req, res) => {
   if (files.length > 0) {
     // eslint-disable-next-line prefer-destructuring
     const length = files.length;
-    update.avatarUrl = files[length - 1].path;
+    update.avatarUrl = files[length - 1].location;
   }
 
   try {
