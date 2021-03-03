@@ -71,7 +71,7 @@ export const confirmEmail = async (req, res) => {
     );
 
     return res.send(
-      '<script type="text/javascript">alert("이메일 인증을 완료했습니다."); window.location="http://localhost:3000/auth/login"; </script>'
+      '<script type="text/javascript">alert("이메일 인증을 완료했습니다."); window.location="http://codeplat.co.kr/auth/login"; </script>'
     );
   } catch (error) {
     return res.status(200).json({
@@ -366,7 +366,7 @@ export const kakaoLoginCallback = async (
 
 export const KakaoLogin = (req, res) => {
   res.redirect(
-    `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=http://localhost:4000${routes.home}${routes.kakaoCallback}&prompt=login`
+    `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=http://codeplat.co.kr${routes.home}${routes.kakaoCallback}&prompt=login`
   );
 };
 

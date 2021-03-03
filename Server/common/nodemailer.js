@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import smtpTransporter from "nodemailer-smtp-transport";
 import inlineCss from "nodemailer-juice";
 import { emailForm } from "./emailForm";
+import { BACK_URL, CLIENT_URL } from "./config";
 
 // eslint-disable-next-line import/prefer-default-export
 export const nodemail = (email, keyForVerify, type = "confirm") => {
@@ -29,13 +30,13 @@ export const nodemail = (email, keyForVerify, type = "confirm") => {
 
   if (type === "confirm") {
     const encodingKey = encodeURIComponent(keyForVerify);
-    url = `http://localhost:4000/api/confirmEmail?key=${encodingKey}`;
+    url = `${BACK_URL}/api/confirmEmail?key=${encodingKey}`;
   } else {
     // 프론트에서 만든 password 바꾸는 uri 주기
     // 쿼리에 이메일 붙여서 주고 프론트에서 보낼때 이메일 백으로 주기
     // ex
     emailType = "password";
-    url = `http://localhost:3000/auth/passwordSearch?email=${email}`;
+    url = `${CLIENT_URL}/auth/passwordSearch?email=${email}`;
   }
 
   const mailOpt = {
