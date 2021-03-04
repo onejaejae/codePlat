@@ -24,11 +24,7 @@ const app = express();
 const CookieStore = mongoStore(session);
 
 const corsOption = {
-  origin: [
-    "http://localhost:3000",
-    "http://codeplat.co.kr",
-    "https://codeplat.co.kr",
-  ], // 허락하는 요청 주소
+  origin: ["http://localhost:3000", "https://codeplat.co.kr"], // 허락하는 요청 주소
   credentials: true, // true로 하면 설정한 내용을 response 헤더에 추가 해줍니다.
 };
 
@@ -58,7 +54,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: true,
       domain: process.env.NODE_ENV === "production" && ".codeplat.co.kr",
     },
     store: new CookieStore({ mongooseConnection: mongoose.connection }),
