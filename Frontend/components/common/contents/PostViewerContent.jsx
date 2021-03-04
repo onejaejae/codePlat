@@ -72,8 +72,8 @@ const PostViewerContent = ({ post, contentType }) => {
     let mergedFiles = [];
     for (let i = 0; i < post.fileUrl.length; i++) {
       let newFile = {};
-      newFile.url = `${SERVER_URL}/${post.fileUrl[i]}`;
-      newFile.thumbUrl = `${SERVER_URL}/${post.fileUrl[i]}`;
+      newFile.url = `${post.fileUrl[i]}`;
+      newFile.thumbUrl = `${post.fileUrl[i]}`;
       newFile.name = post.fileName[i];
       newFile.uid = i;
       newFile.status = "done";
