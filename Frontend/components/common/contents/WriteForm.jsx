@@ -85,8 +85,8 @@ const WriteForm = ({ contentType, router, isEdit }) => {
     let mergedFiles = [];
     for (let i = 0; i < fileList.length; i++) {
       let newFile = {};
-      newFile.url = `${SERVER_URL}/${fileList[i]}`;
-      newFile.thumbUrl = `${SERVER_URL}/${fileList[i]}`;
+      newFile.url = `${fileList[i]}`;
+      newFile.thumbUrl = `${fileList[i]}`;
       newFile.name = fileNames[i];
       newFile.uid = i;
       newFile.status = "done";
