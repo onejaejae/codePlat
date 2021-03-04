@@ -110,8 +110,8 @@ const EditProfile = () => {
   useEffect(() => {
     setProfileImage({
       uid: shortid.generate(),
-      url: `${SERVER_URL}/${me.avatarUrl}`,
-      thumbUrl: `${SERVER_URL}/${me.avatarUrl}`,
+      url: `${me.avatarUrl}`,
+      thumbUrl: `${me.avatarUrl}`,
       status: "done",
     });
     setNickname(me.nickname);

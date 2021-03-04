@@ -148,8 +148,8 @@ const EditProfileForm = ({
                 me.avatarUrl && [
                   {
                     uid: shortid.generate(),
-                    url: `${SERVER_URL}/${me.avatarUrl}`,
-                    thumbUrl: `${SERVER_URL}/${me.avatarUrl}`,
+                    url: `${me.avatarUrl}`,
+                    thumbUrl: `${me.avatarUrl}`,
                     name: me.avatarUrl,
                     status: "done",
                   },
