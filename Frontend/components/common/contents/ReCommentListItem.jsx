@@ -305,7 +305,7 @@ const ReCommentListItem = ({ reComment, post, me, onDeleteComment }) => {
                   <Image
                     width={28}
                     height={28}
-                    src={`${SERVER_URL}/${reComment.writer.avatarUrl}`}
+                    src={`${reComment.writer.avatarUrl}`}
                   />
                 )
               }

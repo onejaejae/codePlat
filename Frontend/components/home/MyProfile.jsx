@@ -98,7 +98,7 @@ const MyProfile = ({ me }) => {
                     <Image
                       width={32}
                       height={32}
-                      src={`${SERVER_URL}/${me.avatarUrl}`}
+                      src={`${me.avatarUrl}`}
                     />
                   )
                 }

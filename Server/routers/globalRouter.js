@@ -47,7 +47,7 @@ globalRouter.get(routes.github, githubLogin);
 globalRouter.get(
   routes.githubCallback,
   passport.authenticate("github", {
-    failureRedirect: "http://localhost:3000/auth/register",
+    failureRedirect: "http://codeplat.co.kr/auth/register",
   }),
   postGithubLogin
 );
@@ -57,7 +57,7 @@ globalRouter.get(routes.kakao, KakaoLogin);
 globalRouter.get(
   routes.kakaoCallback,
   passport.authenticate("kakao", {
-    failureRedirect: "http://localhost:3000/auth/register",
+    failureRedirect: "http://codeplat.co.kr/auth/register",
   }),
   postKakaoLogin
 );
@@ -68,7 +68,7 @@ globalRouter.get(routes.google, googleLogin);
 globalRouter.get(
   routes.googleCallback,
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/auth/register",
+    failureRedirect: "http://codeplat.co.kr/auth/register",
   }),
   postGoogleLogin
 );
@@ -79,7 +79,7 @@ globalRouter.get(routes.naver, naverLogin);
 globalRouter.get(
   routes.naverCallback,
   passport.authenticate("naver", {
-    failureRedirect: "http://localhost:3000/auth/register",
+    failureRedirect: "http://codeplat.co.kr/auth/register",
   }),
   postNaverLogin
 );

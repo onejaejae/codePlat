@@ -202,7 +202,7 @@ const PostViewerContent = ({ post, contentType }) => {
                     me &&
                     me.avatarUrl && (
                       <img
-                        src={`${SERVER_URL}/${me.avatarUrl}`}
+                        src={`${me.avatarUrl}`}
                         width={32}
                         hieght={32}
                       />

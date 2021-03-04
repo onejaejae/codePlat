@@ -239,7 +239,7 @@ const PostViewerHeader = ({ post, contentType }) => {
                 post.writer &&
                 post.writer.avatarUrl && (
                   <Image
-                    src={`${SERVER_URL}/${post.writer.avatarUrl}`}
+                    src={`${post.writer.avatarUrl}`}
                     width={32}
                     height={32}
                   />

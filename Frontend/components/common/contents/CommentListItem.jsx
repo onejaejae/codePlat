@@ -444,7 +444,7 @@ const CommentListItem = ({ item, post }) => {
                 item.writer &&
                 item.writer.avatarUrl && (
                   <Image
-                    src={`${SERVER_URL}/${item.writer.avatarUrl}`}
+                    src={`${item.writer.avatarUrl}`}
                     width={28}
                     height={28}
                   />
