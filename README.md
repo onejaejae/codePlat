@@ -125,8 +125,8 @@ Redux 패턴은 크게 action type, action creator, reducer 3가지의 분류로
 
 ### 5.1 Backend 로드맵
 
-<center><img src="https://user-images.githubusercontent.com/62149784/110156262-17536680-7e2a-11eb-9f61-576a87bb708b.jpg
-" width="400" ></center>
+![로드맵](https://user-images.githubusercontent.com/62149784/110156864-d3ad2c80-7e2a-11eb-98c4-e7d7f027ec28.png)
+
 
 <br>
 
