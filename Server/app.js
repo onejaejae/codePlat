@@ -54,12 +54,13 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: true,
+      secure: false,
       domain: process.env.NODE_ENV === "production" && ".codeplat.co.kr",
     },
     store: new CookieStore({ mongooseConnection: mongoose.connection }),
   })
 );
+app.set("trust proxy", 1);
 app.use(passport.initialize());
 app.use(passport.session());
 
