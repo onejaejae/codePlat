@@ -127,15 +127,149 @@ Redux 패턴은 크게 action type, action creator, reducer 3가지의 분류로
 
 ---
 
-![로드맵](https://user-images.githubusercontent.com/62149784/110156864-d3ad2c80-7e2a-11eb-98c4-e7d7f027ec28.png)
+<img src="https://user-images.githubusercontent.com/62149784/110156864-d3ad2c80-7e2a-11eb-98c4-e7d7f027ec28.png">
 
+<br>
 
-
-5.2 DATABASE ERD
+### 5.1 DATABASE ERD
 
 ---
 
-![db스키마](https://user-images.githubusercontent.com/62149784/110210126-9c468a80-7ed3-11eb-851e-87580a6aeb33.jpg)
+<img src="https://user-images.githubusercontent.com/62149784/110210126-9c468a80-7ed3-11eb-851e-87580a6aeb33.jpg">
+
+<br>
+
+### 5.2 Mongoose
+---
+
+✔ MongoDB의 ODM으로 널리 사용되고 코드 구성이나 개발 편의성 측면에서 장점이 많은 Mongoose를 사용했습니다.
+
+✔ ES6와 mongoose 쿼리 빌더를 사용해 간단하고 직관적이게 코드를 구현하도록 노력했습니다.
+
+<img src="https://user-images.githubusercontent.com/62149784/110210917-6b685480-7ed7-11eb-9e3c-64b8b25d113b.jpg">
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/62149784/110210951-a23e6a80-7ed7-11eb-8b32-71a21561228b.jpg">
+
+
+<br>
+
+### 5.3 Mongoose aggregate
+
+---
+
+✔  기존의 mongoose 쿼리 빌더로는 원하는 데이터로 가공하는데 어려움을 겪어  데이터 처리 파이프라인의 개념을 모델로 하는 aggregate를 사용했습니다.
+
+<br>
+
+
+
+<br>
+
+
+![aggregate code](https://user-images.githubusercontent.com/62149784/110211586-96a07300-7eda-11eb-893a-4f796e7f8683.jpg)
+
+<br>
+
+![댓글 순](https://user-images.githubusercontent.com/62149784/110211589-986a3680-7eda-11eb-93b6-312dcc0f7e44.jpg)
+
+<br>
+
+### 5.4 Model-Routes-Controllers Structure
+
+___
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/62149784/110213308-d1a6a480-7ee2-11eb-906f-6583a212cec4.jpg">
+
+<br>
+
+- Routres : 지원된 요청들을 알맞은 Controller 함수들로 보냅니다.  
+
+- models : 데이터베이스에서 정보를 가져온 뒤, Controller에 전달합니다.
+
+
+- Controllers : 모델로부터 요청된 데이터를 얻어내거나 , 얻어낸 데이터를 가공하여 처리합니다. 
+
+<br>
+
+✔ Model-Routes-Controllers Structure를 구현 하기 위한 Directory Structure
+
+<br>
+
+
+<img width="171" src="https://user-images.githubusercontent.com/62149784/110213612-1b43bf00-7ee4-11eb-9957-b96857ba82d6.jpg">
+
+<br>
+
+<img width="171" src="https://user-images.githubusercontent.com/62149784/110215660-50eda580-7eee-11eb-93f3-fec3ee70ebb5.jpg
+">
+
+<br>
+
+### 5.5 📢 One single source of truth
+
+---
+
+<br>
+
+<img width="171" src="https://user-images.githubusercontent.com/62149784/110213933-8772f280-7ee5-11eb-9e5f-e4ce928f26a2.jpg">
+
+
+<br>
+
+
+  라우팅 하는 URL 주소를 routes.js 라는 파일을 만들어 따로 보관하므로써 재사용성을 확보하여 One single source of truth 원칙을 준수하려고 노력했습니다.
+
+<br>
+
+### 5.6 Restful API
+
+___
+
+<br>
+
+REST에서 가장 중요하며 기본적인 규칙 두가지를 준수하기 위해 노력했습니다.
+
+1.  URI는 정보의 자원을 표현해야 한다. (`리소스 식별`)
+   
+2. 자원에 대한 행위는 HTTP Method로 표현한다.
+
+<br>
+
+
+
+📌 ENDPOINT
+
+<br>
+
+
+<img src="https://user-images.githubusercontent.com/62149784/110215565-cc9b2280-7eed-11eb-8010-ab6d361afdb0.jpg">
+
+
+
+
+<br>
+
+
+✔ 두가지 규칙을 가지고 URI를 설계하는 것을 목표로 하고 그 상황에서 안될 때 컨트롤 URI를 사용하였습니다.
+
+
+✔ 계층 구조상 상위를 컬렉션으로 보고 복수단어를 사용 했습니다.
+
+
+✔ 게시글 작성 시 PRG(Post/Redirect/Get)을 사용해 게시글 중복 작성을 방지하였습니다.
+
+
+
+
+
+
+
+
+
 
 
 <br>
@@ -158,6 +292,8 @@ $ npm run dev
 # build for production and launch server
 $ npm run build && npm start
 ```
+
+
 
 <br>
 
