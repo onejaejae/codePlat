@@ -121,11 +121,21 @@ Redux 패턴은 크게 action type, action creator, reducer 3가지의 분류로
 
 개발 생산성을 위해 CSS UI 프레임워크인 antd를 사용하였고 styled-components 라이브러리를 적용하여 커스텀 디자인을 구현했습니다.
 
-## 5. Backend
 
-### 5.1 Backend 로드맵
+
+### 5. Backend 로드맵
+
+---
 
 ![로드맵](https://user-images.githubusercontent.com/62149784/110156864-d3ad2c80-7e2a-11eb-98c4-e7d7f027ec28.png)
+
+
+
+5.2 DATABASE ERD
+
+---
+
+![db스키마](https://user-images.githubusercontent.com/62149784/110210126-9c468a80-7ed3-11eb-851e-87580a6aeb33.jpg)
 
 
 <br>
