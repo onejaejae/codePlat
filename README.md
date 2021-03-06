@@ -204,8 +204,7 @@ ___
 
 <br>
 
-<img width="171" src="https://user-images.githubusercontent.com/62149784/110215660-50eda580-7eee-11eb-93f3-fec3ee70ebb5.jpg
-">
+<img width="171" src="https://user-images.githubusercontent.com/62149784/110215777-e4bf7180-7eee-11eb-977e-4e1cc67518b0.jpg">
 
 <br>
 
