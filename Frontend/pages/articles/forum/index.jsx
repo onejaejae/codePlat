@@ -65,7 +65,9 @@ const Forum = ({ router }) => {
   // redux
 
   const dispatch = useDispatch();
-  const { forumPosts, loadPostsLoading } = useSelector((state) => state.post);
+  const { forumPosts, loadForumPostsLoading } = useSelector(
+    (state) => state.post,
+  );
   const { temporalPostsLength } = useSelector((state) => state.post);
 
   // local state
@@ -103,9 +105,6 @@ const Forum = ({ router }) => {
     [router],
   );
 
-  // helper method
-
-
   // hooks
 
   useEffect(() => {
@@ -123,7 +122,7 @@ const Forum = ({ router }) => {
       skip = 0;
       dispatch(initializePostsAction());
     };
-  }, [router]);
+  }, [router, radioValue, field]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -132,7 +131,7 @@ const Forum = ({ router }) => {
       const clientHeight = document.documentElement.clientHeight;
 
       if (scrollTop + clientHeight > scrollHeight - 300) {
-        if (!loadPostsLoading) {
+        if (!loadForumPostsLoading) {
           if (temporalPostsLength >= 10) {
             dispatch(
               loadForumPostsRequestAction({
@@ -151,7 +150,7 @@ const Forum = ({ router }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [temporalPostsLength, loadPostsLoading, forumPosts]);
+  }, [temporalPostsLength, loadForumPostsLoading, forumPosts]);
 
   return (
     <>
@@ -185,7 +184,7 @@ const Forum = ({ router }) => {
           </Radio.Group>
         </ForumFilterWrapper>
         <List data={forumPosts} type="forum" />
-        {loadPostsLoading && (
+        {loadForumPostsLoading && (
           <SpinWrapper>
             <Spin tip="불러오는중..." />
           </SpinWrapper>
