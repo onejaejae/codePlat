@@ -109,9 +109,11 @@ const ButtonGroup = styled.div`
   }
   @media (max-width: 768px) {
     .btn-mypage,
-    .btn-logout {
-      width: 70px;
-      font-size: 12px;
+    .btn-logout,
+    .btn-login,
+    .btn-register {
+      width: 50px;
+      font-size: 11px;
       padding: 0;
     }
   }

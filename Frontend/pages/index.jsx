@@ -81,7 +81,7 @@ const MainInfoContent = styled.div`
   background: #fff;
   z-index: 2;
   .logo-image {
-    width: 100%;
+    width: 90%;
   }
 `;
 

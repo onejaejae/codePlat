@@ -293,7 +293,7 @@ REST에서 가장 중요하며 기본적인 규칙 두가지를 준수하기 위
 
 <br>
 
-### 5.8 HTTPS를 위한 SSL 인증서
+### 5.9 Let's Encrypt로 SSL 적용
 
 ___
 
@@ -301,7 +301,10 @@ ___
 
 <img src="https://user-images.githubusercontent.com/62149784/110230233-ddca4a80-7f52-11eb-8254-75be64158c93.jpg">
 
--  http는 
+- snap과 nginx를 통해서 letsencrypt를 설치하고 인증서를 발급받았습니다.
+
+- SSL을 통해 개인 정보, 문서, 이미지를 제출하는데 사용된 서식 및 사용자 ID와 암호를 암호화하고 보호하여 보안을 강화했습니다.
+
 
 
 
