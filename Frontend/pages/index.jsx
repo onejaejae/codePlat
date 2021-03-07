@@ -83,6 +83,12 @@ const MainInfoContent = styled.div`
   .logo-image {
     width: 90%;
   }
+  @media (max-width: 1368px) {
+    height: 200px;
+    .logo-image {
+      width: 75%;
+    }
+  }
 `;
 
 const MainInfoBackground = styled.div`
