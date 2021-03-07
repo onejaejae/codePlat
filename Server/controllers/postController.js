@@ -258,6 +258,8 @@ export const getForum = async (req, res) => {
         .limit(10)
         .populate("writer");
 
+      console.log("postsize", posts.length);
+
       return res.status(200).json({
         success: true,
         posts,
