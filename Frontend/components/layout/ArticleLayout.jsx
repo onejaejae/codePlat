@@ -17,7 +17,7 @@ const Content = Layout.Content;
 
 const ContentWrapper = styled(Content)`
   width: 1300px;
-  padding-bottom: 400px;
+
   margin: 0 auto;
   margin-top: 65px;
   @media (max-width: 1368px) {
