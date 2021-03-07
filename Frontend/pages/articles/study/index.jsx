@@ -68,26 +68,26 @@ const Study = ({ router }) => {
 
   // helper method
 
-  const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight - 300;
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
+  // const handleScroll = () => {
+  //   const scrollHeight = document.documentElement.scrollHeight - 300;
+  //   const scrollTop = document.documentElement.scrollTop;
+  //   const clientHeight = document.documentElement.clientHeight;
 
-    if (window.scrollY + clientHeight >= scrollHeight && !loadPostsLoading) {
-      if (temporalPostsLength >= 10) {
-        dispatch(
-          loadPostsReqeustAction({
-            type: "study",
-            skip,
-            techStack: skill,
-            term: router.query.term,
-            location,
-          }),
-        );
-        skip += 10;
-      }
-    }
-  };
+  //   if (window.scrollY + clientHeight >= scrollHeight && !loadPostsLoading) {
+  //     if (temporalPostsLength >= 10) {
+  //       dispatch(
+  //         loadPostsReqeustAction({
+  //           type: "study",
+  //           skip,
+  //           techStack: skill,
+  //           term: router.query.term,
+  //           location,
+  //         }),
+  //       );
+  //       skip += 10;
+  //     }
+  //   }
+  // };
 
   // hooks
 
@@ -109,12 +109,42 @@ const Study = ({ router }) => {
     };
   }, [router, skill, location]);
 
+  // useEffect(() => {
+    
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [temporalPostsLength]);
+
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+
+      if (scrollTop + clientHeight > scrollHeight - 300) {
+        if (!loadPostsLoading) {
+          if (temporalPostsLength >= 10) {
+            dispatch(
+              loadPostsReqeustAction({
+                type: "study",
+                skip,
+                techStack: skill,
+                term: router.query.term,
+                location,
+              }),
+            );
+            skip += 10;
+          }
+        }
+      }
+    };
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [temporalPostsLength]);
+  }, [temporalPostsLength, loadPostsLoading, studyPosts]);
 
   return (
     <>
