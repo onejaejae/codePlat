@@ -108,6 +108,7 @@ const Forum = ({ router }) => {
   // hooks
 
   useEffect(() => {
+    skip = 0;
     dispatch(
       loadForumPostsRequestAction({
         type: radioValue,
