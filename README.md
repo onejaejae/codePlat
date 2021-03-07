@@ -332,8 +332,18 @@ ___
 <br>
 
 ### 5.10 무중단 배포
-
 ___
+
+<br>
+
+✔ 노드는 기본적으로 싱글스레드라 단일 코어에서 실행되기 때문에 멀티 코어 시스템을 사용할 수 없는 단점이 있어 이를 해결하기 위해 클러스터(Cluster) 모듈을 통해 단일 프로세스를 멀티 프로세스(Worker)로 늘릴 방법을 제공하는 PM2를 사용해 노드JS 애플리케이션을 무중단으로 운영하도록 구현했습니다.
+
+✔ PM2의 Monitering 기능을 사용해  전체 프로세스에서 발생하는 로그를 터미널을 통해 실시간으로 확인 가능합니다.
+
+<img src="https://user-images.githubusercontent.com/62149784/110235611-6dccbc00-7f74-11eb-8443-9284d7f164b5.jpg">
+
+<img src="https://user-images.githubusercontent.com/62149784/110235613-70c7ac80-7f74-11eb-98b5-db32773382ac.jpg">
+
 
 <br>
 
@@ -367,8 +377,18 @@ $ npm run build && npm start
 ### 6.2 Backend
 
 ```
+# go to directory
+$ cd /ProjectServer
 
+# install dependencies
+$ npm install
+$ yarn install
 
+# running dev
+$ npm run dev
+
+# running production
+$ npm run start
 ```
 
 <br>
