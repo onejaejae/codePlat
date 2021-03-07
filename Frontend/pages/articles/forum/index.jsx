@@ -103,7 +103,29 @@ const Forum = ({ router }) => {
     [router],
   );
 
-  // helper method
+
+
+  // hooks
+
+  useEffect(() => {
+    dispatch(
+      loadForumPostsRequestAction({
+        type: radioValue,
+        term: router.query.term,
+        skip,
+        field,
+      }),
+    );
+    skip += 10;
+
+    return () => {
+      skip = 0;
+      dispatch(initializePostsAction());
+    };
+  }, [router]);
+
+  useEffect(() => {
+      // helper method
 
   const handleScroll = () => {
     const scrollHeight = Math.max(
@@ -129,32 +151,11 @@ const Forum = ({ router }) => {
       skip += 10;
     }
   };
-
-  // hooks
-
-  useEffect(() => {
-    dispatch(
-      loadForumPostsRequestAction({
-        type: radioValue,
-        term: router.query.term,
-        skip,
-        field,
-      }),
-    );
-    skip += 10;
-
-    return () => {
-      skip = 0;
-      dispatch(initializePostsAction());
-    };
-  }, [router]);
-
-  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [temporalPostsLength, loadPostsLoading, temporalPostsLength, radioValue, field, router, skip]);
+  }, [temporalPostsLength, forumPosts]);
 
   return (
     <>
