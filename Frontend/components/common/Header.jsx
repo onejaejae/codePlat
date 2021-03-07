@@ -116,8 +116,8 @@ const ButtonGroup = styled.div`
     }
     .btn-mypage,
     .btn-logout {
-      width: 40px;
-      font-size: 10px;
+      width: 40.5px;
+      font-size: 9.5px;
       padding: 0;
     }
   }
