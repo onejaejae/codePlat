@@ -194,7 +194,7 @@ const RegisterInputForm = ({ router }) => {
     setProgress(0);
   }, []);
 
-  const onSocialRegisterSubmit = useCallback(
+  const onSocialRegisterSubmit =
     (e) => {
       if (nickname === "") {
         alert("닉네임을 입력해주세요.");
@@ -330,10 +330,9 @@ const RegisterInputForm = ({ router }) => {
             formData.delete("githubUrl");
           });
       }
-    },
+    }
 
-    [nickname, skill, githubUrl, noneEmailUser],
-  );
+  
 
   // hooks
 
