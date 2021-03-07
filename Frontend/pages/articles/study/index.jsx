@@ -69,11 +69,11 @@ const Study = ({ router }) => {
   // helper method
 
   const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollHeight = document.documentElement.scrollHeight - 300;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
 
-    if (scrollTop + clientHeight >= scrollHeight && !loadPostsLoading) {
+    if (window.scrollY + clientHeight >= scrollHeight && !loadPostsLoading) {
       if (temporalPostsLength >= 10) {
         dispatch(
           loadPostsReqeustAction({
