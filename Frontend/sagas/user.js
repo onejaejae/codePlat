@@ -45,7 +45,7 @@ function* loginSaga(action) {
     yield put({ type: LOG_IN_SUCCESS, user: res.data.user });
   } catch (error) {
     console.log(error);
-    if (error.message !== "Incorrect password.") {
+    if (error.response.data !== "Incorrect password.") {
       alert("이메일 인증을 완료해주세요.");
       axios
         .post(`/api/mailAuth`, { email: action.payload.email })
@@ -57,8 +57,9 @@ function* loginSaga(action) {
         .catch((err) => {
           console.log(err);
         });
+    } else {
+      yield put({ type: LOG_IN_FAILURE, error: error.response.data });
     }
-    yield put({ type: LOG_IN_FAILURE });
   }
 }
 
