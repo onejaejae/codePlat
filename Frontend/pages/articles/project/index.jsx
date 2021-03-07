@@ -68,25 +68,6 @@ const Project = ({ router }) => {
 
   // helper method
 
-  const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight >= scrollHeight && !loadPostsLoading) {
-      if (temporalPostsLength >= 10) {
-        dispatch(
-          loadPostsReqeustAction({
-            type: "project",
-            skip,
-            techStack: skill,
-            term: router.query.term,
-            location,
-          }),
-        );
-        skip += 10;
-      }
-    }
-  };
 
   // hooks
 
@@ -109,11 +90,33 @@ const Project = ({ router }) => {
   }, [router, skill, location]);
 
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+
+      if (scrollTop + clientHeight > scrollHeight - 300) {
+        if (!loadPostsLoading) {
+          if (temporalPostsLength >= 10) {
+            dispatch(
+              loadPostsReqeustAction({
+                type: "project",
+                skip,
+                techStack: skill,
+                term: router.query.term,
+                location,
+              }),
+            );
+            skip += 10;
+          }
+        }
+      }
+    };
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [temporalPostsLength]);
+  }, [temporalPostsLength, loadPostsLoading, projectPosts]);
 
   return (
     <>
