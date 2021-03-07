@@ -332,7 +332,7 @@ const RegisterInputForm = ({ router }) => {
       }
     },
 
-    [nickname, skill, githubUrl],
+    [nickname, skill, githubUrl, noneEmailUser],
   );
 
   // hooks
