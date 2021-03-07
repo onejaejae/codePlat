@@ -106,10 +106,16 @@ const Forum = ({ router }) => {
   // helper method
 
   const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+    );
+    const scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop,
+    );
     const clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight >= scrollHeight && !loadPostsLoading) {
+    if (scrollTop + clientHeight === scrollHeight && !loadPostsLoading) {
       if (temporalPostsLength >= 10) {
         dispatch(
           loadForumPostsRequestAction({
@@ -148,7 +154,7 @@ const Forum = ({ router }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [temporalPostsLength, loadPostsLoading, temporalPostsLength, radioValue, field, router]);
+  }, [temporalPostsLength, loadPostsLoading, temporalPostsLength, radioValue, field, router, skip]);
 
   return (
     <>
