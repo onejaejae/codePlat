@@ -301,7 +301,11 @@ REST에서 가장 중요하며 기본적인 규칙 두가지를 준수하기 위
 
 <img src="https://user-images.githubusercontent.com/62149784/110232660-63092b80-7f62-11eb-9ab5-12f6efc37936.png">
 
-✔ 
+✔ 유저가 http로 접속 할 경우 https로 접속하도록 nginx를 next, express 서버 앞 단에 두어 Reverse Proxy를 통해 보안을 강화했습니다.
+
+✔ http의 기본 포트인 80번 포트로 요청이 오면 nginx를 거쳐서 https의 기본 포트인 443번 포트로 redirect 시켜서 요청에 맞게 각각 next, express 서버로 보내줍니다.
+
+
 
 <br>
 
