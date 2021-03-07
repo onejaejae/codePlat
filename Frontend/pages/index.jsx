@@ -56,8 +56,7 @@ const MainLoadingSkeleton = styled(Skeleton)`
 const MainInfoWrapper = styled.div`
   padding: 20px;
   width: 100%;
-  height: 62vh;
-  margin-bottom: 20px;
+ 
   position: relative;
 
   @media (max-width: 1368px) {
@@ -74,17 +73,14 @@ const MainInfoWrapper = styled.div`
 
 const MainInfoContent = styled.div`
   padding: 20px;
-  position: absolute;
-  top: 50px;
-  width: 340px;
-  height: 400px;
+  
   background: #fff;
   z-index: 2;
   .logo-image {
     width: 90%;
   }
-  @media (max-width: 1368px) {
-    height: 200px;
+  @media (max-width: 1368px){
+  
     .logo-image {
       width: 75%;
     }
@@ -157,7 +153,7 @@ const index = () => {
                       스터디 및 커뮤니티 기능을 제공하는 서비스 플랫폼입니다."
                     </p>
                   </MainInfoContent>
-                  <MainInfoBackground className="main-info-back" />
+                  
                 </MainInfoWrapper>
               </Row>
               <Row>
@@ -196,7 +192,7 @@ const index = () => {
                       스터디 및 커뮤니티 기능을 제공하는 서비스 플랫폼입니다."
                     </p>
                   </MainInfoContent>
-                  <MainInfoBackground className="main-info-back" />
+                  
                 </MainInfoWrapper>
               </Row>
               {mainLoadPostsLoading ? (

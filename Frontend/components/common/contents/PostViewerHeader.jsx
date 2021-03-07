@@ -53,6 +53,9 @@ const PostViewerHeaderWrapper = styled.div`
 
     line-height: 30px;
     display: flex;
+    @media(max-width:1368px){
+      flex-direction:column
+    }
     .post-summary {
     }
     .post-btns {
