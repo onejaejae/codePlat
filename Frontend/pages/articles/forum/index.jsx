@@ -148,7 +148,7 @@ const Forum = ({ router }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [temporalPostsLength]);
+  }, [temporalPostsLength, loadPostsLoading, temporalPostsLength, radioValue, field, router]);
 
   return (
     <>

@@ -301,8 +301,9 @@ REST에서 가장 중요하며 기본적인 규칙 두가지를 준수하기 위
 
 <img src="https://user-images.githubusercontent.com/62149784/110232660-63092b80-7f62-11eb-9ab5-12f6efc37936.png">
 
+✔ 
 
-
+<br>
 
 ### 5.9 Let's Encrypt로 SSL 적용
 
