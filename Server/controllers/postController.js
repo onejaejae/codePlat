@@ -238,6 +238,8 @@ export const getForum = async (req, res) => {
   findArgs.type = "forum";
   findArgs.field = field;
 
+  console.log("skip", skip);
+
   if (field === "전체") {
     delete findArgs.field;
   }
