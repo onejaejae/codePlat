@@ -45,15 +45,19 @@ function* loginSaga(action) {
     yield put({ type: LOG_IN_SUCCESS, user: res.data.user });
   } catch (error) {
     console.log(error);
-    alert("이메일 인증을 완료해주세요.");
-    axios
-      .post(`/api/mailAuth`, { email: action.payload.email })
-      .then((res) => {
-        alert("인증 링크가 포함된 이메일을 다시 보내드렸습니다. 확인해주세요!");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (error.message !== "Incorrect password.") {
+      alert("이메일 인증을 완료해주세요.");
+      axios
+        .post(`/api/mailAuth`, { email: action.payload.email })
+        .then((res) => {
+          alert(
+            "인증 링크가 포함된 이메일을 다시 보내드렸습니다. 확인해주세요!"
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
     yield put({ type: LOG_IN_FAILURE });
   }
 }
