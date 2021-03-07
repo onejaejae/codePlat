@@ -220,7 +220,7 @@ ___
 <br>
 
 
-  라우팅 하는 URL 주소를 routes.js 라는 파일을 만들어 따로 보관하므로써 재사용성을 확보하여 One single source of truth 원칙을 준수하려고 노력했습니다.
+  라우팅 하는 URL 주소를 routes.js 라는 파일을 만들어 따로 보관함으로써 재사용성을 확보하여 One single source of truth 원칙을 준수하려고 노력했습니다.
 
 <br>
 
