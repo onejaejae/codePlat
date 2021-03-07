@@ -305,7 +305,13 @@ REST에서 가장 중요하며 기본적인 규칙 두가지를 준수하기 위
 
 ✔ http의 기본 포트인 80번 포트로 요청이 오면 nginx를 거쳐서 https의 기본 포트인 443번 포트로 redirect 시켜서 요청에 맞게 각각 next, express 서버로 보내줍니다.
 
+<br>
 
+✔ https 설정 코드 (/etc/nginx/nginx.conf)
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/62149784/110234593-ab2e4b00-7f6e-11eb-8fd5-e10e6f842212.jpg">
 
 <br>
 
@@ -317,18 +323,19 @@ ___
 
 <img src="https://user-images.githubusercontent.com/62149784/110230233-ddca4a80-7f52-11eb-8254-75be64158c93.jpg">
 
-- snap과 nginx를 통해서 letsencrypt를 설치하고 인증서를 발급받았습니다.
+<br>
 
-- SSL을 통해 개인 정보, 문서, 이미지를 제출하는데 사용된 서식 및 사용자 ID와 암호를 암호화하고 보호하여 보안을 강화했습니다.
+✔  snap과 nginx를 통해서 letsencrypt를 설치하고 인증서를 발급받았습니다.
 
+✔ SSL을 통해 개인 정보, 문서, 이미지를 제출하는데 사용된 서식 및 사용자 ID와 암호를 암호화하고 보호하여 보안을 강화했습니다.
 
+<br>
 
+### 5.10 무중단 배포
 
+___
 
-
-
-
-
+<br>
 
 
 
