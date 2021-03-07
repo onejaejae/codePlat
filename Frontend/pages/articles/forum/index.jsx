@@ -103,7 +103,26 @@ const Forum = ({ router }) => {
     [router],
   );
 
+  // helper method
 
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight - 300;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    if (window.pageYOffset + clientHeight > scrollHeight && !loadPostsLoading) {
+      if (temporalPostsLength >= 10) {
+        dispatch(
+          loadForumPostsRequestAction({
+            type: radioValue,
+            skip,
+            term: router.query.term,
+            field,
+          }),
+        );
+      }
+      skip += 10;
+    }
+  };
 
   // hooks
 
@@ -125,37 +144,11 @@ const Forum = ({ router }) => {
   }, [router]);
 
   useEffect(() => {
-      // helper method
-
-  const handleScroll = () => {
-    const scrollHeight = Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-    );
-    const scrollTop = Math.max(
-      document.documentElement.scrollTop,
-      document.body.scrollTop,
-    );
-    const clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight === scrollHeight && !loadPostsLoading) {
-      if (temporalPostsLength >= 10) {
-        dispatch(
-          loadForumPostsRequestAction({
-            type: radioValue,
-            skip,
-            term: router.query.term,
-            field,
-          }),
-        );
-      }
-      skip += 10;
-    }
-  };
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [temporalPostsLength, forumPosts]);
+  }, [temporalPostsLength, loadPostsLoading, temporalPostsLength, radioValue, field, router]);
 
   return (
     <>
