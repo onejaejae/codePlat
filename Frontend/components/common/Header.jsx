@@ -107,7 +107,7 @@ const ButtonGroup = styled.div`
       border: 1px solid #313355;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1368px) {
     .btn-mypage,
     .btn-logout,
     .btn-login,
