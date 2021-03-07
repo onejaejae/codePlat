@@ -116,7 +116,9 @@ const Forum = ({ router }) => {
         field,
       }),
     );
-    skip += 10;
+    if (loadForumPostsDone) {
+      skip += 10;
+    }
 
     return () => {
       skip = 0;
