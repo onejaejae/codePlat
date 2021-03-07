@@ -109,7 +109,7 @@ const Forum = ({ router }) => {
     const scrollHeight = document.documentElement.scrollHeight - 300;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
-    if (window.pageYOffset + clientHeight > scrollHeight && !loadPostsLoading) {
+    if (window.pageYOffset + clientHeight >= scrollHeight && !loadPostsLoading) {
       if (temporalPostsLength >= 10) {
         dispatch(
           loadForumPostsRequestAction({
