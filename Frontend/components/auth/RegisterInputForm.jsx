@@ -134,10 +134,10 @@ const RegisterInputForm = ({ router }) => {
     setNicknameExistError(false);
   }, []);
 
-  const onChangeEmail = useCallback((e) => {
+  const onChangeEmail = (e) => {
     setEmail(e.target.value);
     setEmailExistError(false);
-  }, []);
+  };
 
   const onClickEmailVerify = useCallback(() => {
     setProgress(2);
@@ -194,145 +194,141 @@ const RegisterInputForm = ({ router }) => {
     setProgress(0);
   }, []);
 
-  const onSocialRegisterSubmit =
-    (e) => {
-      if (nickname === "") {
-        alert("닉네임을 입력해주세요.");
-        return;
-      }
-      if (noneEmailUser && email === "") {
-        console.log(noneEmailUser, email);
-        alert("이메일을 입력해주세요.");
-        return;
-      }
-      const config = {
-        headers: {
-          Accept: "application/json",
-          enctype: "multipart/form-data",
-        },
-      };
+  const onSocialRegisterSubmit = (e) => {
+    if (nickname === "") {
+      alert("닉네임을 입력해주세요.");
+      return;
+    }
+    if (noneEmailUser && email === "") {
+      alert("이메일을 입력해주세요.");
+      return;
+    }
+    const config = {
+      headers: {
+        Accept: "application/json",
+        enctype: "multipart/form-data",
+      },
+    };
 
-      if (noneEmailUser) {
-        formData.append("type", "email");
-        formData.append("nickname", nickname);
-        formData.append("techStack", JSON.stringify(skill));
-        formData.append("githubUrl", githubUrl);
-        formData.append("email", email);
-        axios
-          .post("/api/join/optionForm", formData, config)
-          .then(async (res) => {
-            if (res.data.message === "email is reduplication") {
-              setEmailExistError(true);
-              formData.delete("type");
-              formData.delete("nickname");
-              formData.delete("techStack");
-              formData.delete("githubUrl");
-              formData.delete("email");
-              return;
-            } else if (res.data.message === "nickname is reduplication") {
-              setNicknameExistError(true);
-              formData.delete("type");
-              formData.delete("nickname");
-              formData.delete("techStack");
-              formData.delete("githubUrl");
-              formData.delete("email");
-              return;
-            }
-
-            setNicknameExistError(false);
-            setEmailExistError(false);
-            setProgress(2);
-
-            let createdUser = await firebase
-              .auth()
-              .createUserWithEmailAndPassword(email, email);
-
-            await createdUser.user.updateProfile({
-              displayName: nickname,
-            });
-            await firebase
-              .database()
-              .ref("users")
-              .child(createdUser.user.uid)
-              .set({
-                nickname: createdUser.user.displayName,
-                type: "social",
-                isInMypage: false,
-              });
-          })
-
-          .catch((error) => {
-            console.log(error);
-            alert("에러 발생.");
+    if (noneEmailUser) {
+      formData.append("type", "email");
+      formData.append("nickname", nickname);
+      formData.append("techStack", JSON.stringify(skill));
+      formData.append("githubUrl", githubUrl);
+      formData.append("email", email);
+      axios
+        .post("/api/join/optionForm", formData, config)
+        .then(async (res) => {
+          if (res.data.message === "email is reduplication") {
+            setEmailExistError(true);
             formData.delete("type");
             formData.delete("nickname");
             formData.delete("techStack");
             formData.delete("githubUrl");
             formData.delete("email");
-          });
-      } else {
-        formData.append("type", "sns");
-        formData.append("nickname", nickname);
-        formData.append("techStack", JSON.stringify(skill));
-        formData.append("githubUrl", githubUrl);
-        axios
-          .post("/api/join/optionForm", formData, config)
-          .then(async (res) => {
-            if (res.data.message === "nickname is reduplication") {
-              setNicknameExistError(true);
-              formData.delete("type");
-              formData.delete("nickname");
-              formData.delete("techStack");
-              formData.delete("githubUrl");
-              return;
-            }
-
-            setNicknameExistError(false);
-            setFirebaseLoading(true);
-
-            let createdUser = await firebase
-              .auth()
-              .createUserWithEmailAndPassword(
-                res.data.user.email,
-                res.data.user.email,
-              );
-
-            await createdUser.user.updateProfile({
-              displayName: nickname,
-            });
-
-            await firebase
-              .database()
-              .ref("users")
-              .child(createdUser.user.uid)
-              .set({
-                email: createdUser.user.email,
-                nickname: createdUser.user.displayName,
-                type: "social",
-                isInMypage: false,
-              });
-
-            let SignedInUser = await firebase
-              .auth()
-              .signInWithEmailAndPassword(
-                res.data.user.email,
-                res.data.user.email,
-              );
-            setFirebaseLoading(false);
-            router.push("/");
-          })
-          .catch((error) => {
-            alert("에러 발생.");
-            console.log(error);
+            return;
+          } else if (res.data.message === "nickname is reduplication") {
+            setNicknameExistError(true);
             formData.delete("type");
             formData.delete("nickname");
             formData.delete("techStack");
             formData.delete("githubUrl");
-          });
-      }
-    }
+            formData.delete("email");
+            return;
+          }
 
-  
+          setNicknameExistError(false);
+          setEmailExistError(false);
+          setProgress(2);
+
+          let createdUser = await firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, email);
+
+          await createdUser.user.updateProfile({
+            displayName: nickname,
+          });
+          await firebase
+            .database()
+            .ref("users")
+            .child(createdUser.user.uid)
+            .set({
+              nickname: createdUser.user.displayName,
+              type: "social",
+              isInMypage: false,
+            });
+        })
+
+        .catch((error) => {
+          console.log(error);
+          alert("에러 발생.");
+          formData.delete("type");
+          formData.delete("nickname");
+          formData.delete("techStack");
+          formData.delete("githubUrl");
+          formData.delete("email");
+        });
+    } else {
+      formData.append("type", "sns");
+      formData.append("nickname", nickname);
+      formData.append("techStack", JSON.stringify(skill));
+      formData.append("githubUrl", githubUrl);
+      axios
+        .post("/api/join/optionForm", formData, config)
+        .then(async (res) => {
+          if (res.data.message === "nickname is reduplication") {
+            setNicknameExistError(true);
+            formData.delete("type");
+            formData.delete("nickname");
+            formData.delete("techStack");
+            formData.delete("githubUrl");
+            return;
+          }
+
+          setNicknameExistError(false);
+          setFirebaseLoading(true);
+
+          let createdUser = await firebase
+            .auth()
+            .createUserWithEmailAndPassword(
+              res.data.user.email,
+              res.data.user.email,
+            );
+
+          await createdUser.user.updateProfile({
+            displayName: nickname,
+          });
+
+          await firebase
+            .database()
+            .ref("users")
+            .child(createdUser.user.uid)
+            .set({
+              email: createdUser.user.email,
+              nickname: createdUser.user.displayName,
+              type: "social",
+              isInMypage: false,
+            });
+
+          let SignedInUser = await firebase
+            .auth()
+            .signInWithEmailAndPassword(
+              res.data.user.email,
+              res.data.user.email,
+            );
+          setFirebaseLoading(false);
+          router.push("/");
+        })
+        .catch((error) => {
+          alert("에러 발생.");
+          console.log(error);
+          formData.delete("type");
+          formData.delete("nickname");
+          formData.delete("techStack");
+          formData.delete("githubUrl");
+        });
+    }
+  };
 
   // hooks
 

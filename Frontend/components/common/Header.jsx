@@ -107,6 +107,7 @@ const ButtonGroup = styled.div`
       border: 1px solid #313355;
     }
   }
+
   @media (max-width: 1368px) {
     .btn-login,
     .btn-register {
@@ -117,7 +118,7 @@ const ButtonGroup = styled.div`
     .btn-mypage,
     .btn-logout {
       width: 41px;
-      font-size: 7.5px;
+      font-size: 8px;
       padding: 0;
     }
   }
@@ -206,7 +207,9 @@ const Header = ({ router }) => {
                 globalCount -= v.count;
               }
             });
-            setGlobalCount(globalCount);
+            if (globalCount >= 0) {
+              setGlobalCount(globalCount);
+            }
           }
         });
       me &&

@@ -26,9 +26,14 @@ const SkillFilterFormWrapper = styled.div`
     css`
       width: 100%;
     `}
-  @media (max-width: 1268px) {
-    width: 100%;
-  }
+  ${(props) =>
+    props.type === "register" &&
+    css`
+      width: 100%;
+      .ant-radio-button-wrapper {
+        font-size: 0.7rem;
+      }
+    `}
 `;
 
 const RadioWrapper = styled.div`
