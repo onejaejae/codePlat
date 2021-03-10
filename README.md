@@ -186,7 +186,7 @@ ___
 
 <br>
 
-- Routres : 지원된 요청들을 알맞은 Controller 함수들로 보냅니다.  
+- Routers : 지원된 요청들을 알맞은 Controller 함수들로 보냅니다.  
 
 - models : 데이터베이스에서 정보를 가져온 뒤, Controller에 전달합니다.
 
@@ -208,7 +208,7 @@ ___
 
 <br>
 
-### 5.5 📢 One single source of truth
+### 5.5 One single source of truth
 
 ---
 
