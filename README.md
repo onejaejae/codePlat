@@ -186,7 +186,7 @@ ___
 
 <br>
 
-- Routers : 지원된 요청들을 알맞은 Controller 함수들로 보냅니다.  
+- Routes : 지원된 요청들을 알맞은 Controller 함수들로 보냅니다.  
 
 - models : 데이터베이스에서 정보를 가져온 뒤, Controller에 전달합니다.
 
