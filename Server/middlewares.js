@@ -12,7 +12,7 @@ export const multerAvatar = multer({
   storage: multerS3({
     s3,
     acl: "public-read",
-    bucket: "codePlat/avatar",
+    bucket: "codeplat/avatar",
   }),
 });
 
@@ -21,6 +21,6 @@ export const multerFile = multer({
   storage: multerS3({
     s3,
     acl: "public-read",
-    bucket: "codePlat/file",
+    bucket: "codeplat/file",
   }),
 });
