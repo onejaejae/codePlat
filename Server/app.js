@@ -32,6 +32,8 @@ app.use(cors(corsOption));
 
 if (process.env.NODE_ENV === "production") {
   app.use(morgan("combined"));
+
+  // 보안 관련 패키지
   app.use(hpp());
   app.use(
     helmet({
@@ -42,7 +44,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(morgan("dev"));
 }
 
-app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../Frontend/.next")));
@@ -53,7 +54,9 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
+      // javascript로 변경하지 못하게
       httpOnly: true,
+
       secure: false,
       domain: process.env.NODE_ENV === "production" && ".codeplat.co.kr",
     },
